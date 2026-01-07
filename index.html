@@ -165,48 +165,156 @@
             color: var(--text-secondary);
         }
 
-        /* Skills */
-        .skills-grid {
+        /* Skills Card */
+        .skills-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 16px;
         }
 
-        .skill-category {
-            background: var(--bg-secondary);
-            padding: 16px;
+        .skill-card {
+            background: var(--bg);
             border-radius: 10px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
         }
 
-        .skill-category-title {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 10px;
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+
+        .card-title {
             display: flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .skill-category-title i {
-            color: var(--primary);
             font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
         }
 
-        .skill-tags {
+        .card-title .icon {
+            font-size: 1rem;
+        }
+
+        .proficiency-badge {
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        .proficiency-expert { background: #059669; }
+        .proficiency-familiar { background: #2563eb; }
+        .proficiency-basic { background: #6b7280; }
+
+        .card-body {
+            padding: 14px 16px;
+        }
+
+        .skill-category {
+            margin-bottom: 12px;
+        }
+
+        .skill-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .category-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .tags {
             display: flex;
             flex-wrap: wrap;
             gap: 6px;
         }
 
-        .skill-tag {
-            background: white;
-            color: var(--text-secondary);
+        .tag {
+            display: inline-block;
             padding: 4px 10px;
-            border-radius: 20px;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 5px;
             font-size: 0.75rem;
+            color: #374151;
+            font-weight: 400;
+        }
+
+        .tag-highlight {
+            position: relative;
+            background: white;
+            border: 2px solid transparent;
+            color: #1e293b;
             font-weight: 500;
-            border: 1px solid var(--border);
+            z-index: 1;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .tag-highlight:hover {
+            transform: scale(1.1);
+        }
+
+        /* 當滑鼠進入技能區塊時，高亮標籤跳動 */
+        .skills-container:hover .tag-highlight {
+            animation: bounce-once 0.5s ease;
+        }
+
+        .tag-highlight::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 300% 100%;
+            border-radius: 6px;
+            z-index: -1;
+            animation: gradient-flow 3s ease infinite;
+        }
+
+        .tag-highlight::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            border-radius: 4px;
+            z-index: -1;
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 單次跳動 */
+        @keyframes bounce-once {
+            0%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-8px) scale(1.05); }
+            50% { transform: translateY(0); }
+            70% { transform: translateY(-4px); }
+        }
+
+        @media (max-width: 768px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Experience */
@@ -327,12 +435,9 @@
 
         /* Education */
         .education-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 8px;
+            position: relative;
             padding: 16px;
+            padding-right: 100px;
             background: var(--bg-secondary);
             border-radius: 10px;
             margin-bottom: 12px;
@@ -340,6 +445,12 @@
 
         .education-item:last-child {
             margin-bottom: 0;
+        }
+
+        .education-item .experience-date {
+            position: absolute;
+            top: 16px;
+            right: 16px;
         }
 
         .education-school {
@@ -571,58 +682,148 @@
                 <!-- Skills -->
                 <section class="section">
                     <h2 class="section-title"><i class="fas fa-code"></i> 技術技能</h2>
-                    <div class="skills-grid">
-                        <div class="skill-category">
-                            <h3 class="skill-category-title"><i class="fas fa-brain"></i> AI / ML</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">PyTorch</span>
-                                <span class="skill-tag">TensorFlow</span>
-                                <span class="skill-tag">LangChain</span>
-                                <span class="skill-tag">HuggingFace</span>
-                                <span class="skill-tag">RAG</span>
+                    <div class="skills-container">
+                        <!-- AI 工程卡片 -->
+                        <div class="skill-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <span class="icon">🤖</span>
+                                    AI 工程
+                                </div>
+                                <span class="proficiency-badge proficiency-expert">精通</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="skill-category">
+                                    <span class="category-label">LLM 服務平台</span>
+                                    <div class="tags">
+                                        <span class="tag">OpenAI API</span>
+                                        <span class="tag">Claude API</span>
+                                        <span class="tag">Azure OpenAI</span>
+                                        <span class="tag">AWS Bedrock</span>
+                                        <span class="tag">Gemini</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">LLM 本地部署 / 開源模型</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">Ollama</span>
+                                        <span class="tag tag-highlight">vLLM</span>
+                                        <span class="tag">Llama</span>
+                                        <span class="tag">Mistral</span>
+                                        <span class="tag">Qwen</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">LLM 應用開發</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">LangChain</span>
+                                        <span class="tag">HuggingFace</span>
+                                        <span class="tag tag-highlight">RAG</span>
+                                        <span class="tag">Prompt Engineering</span>
+                                        <span class="tag">Embedding</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">深度學習</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">PyTorch</span>
+                                        <span class="tag tag-highlight">Transformer</span>
+                                        <span class="tag tag-highlight">Fine-tuning</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">語音 AI</span>
+                                    <div class="tags">
+                                        <span class="tag">TTS</span>
+                                        <span class="tag">STT</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-category">
-                            <h3 class="skill-category-title"><i class="fas fa-robot"></i> LLM</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">OpenAI API</span>
-                                <span class="skill-tag">Prompt Engineering</span>
-                                <span class="skill-tag">Milvus</span>
+
+                        <!-- 後端工程卡片 -->
+                        <div class="skill-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <span class="icon">⚙️</span>
+                                    後端工程
+                                </div>
+                                <span class="proficiency-badge proficiency-familiar">熟悉</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="skill-category">
+                                    <span class="category-label">程式語言</span>
+                                    <div class="tags">
+                                        <span class="tag">Python</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">Web 框架</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">FastAPI</span>
+                                        <span class="tag">Flask</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">DevOps</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">Docker</span>
+                                        <span class="tag">Nginx</span>
+                                        <span class="tag">Harbor</span>
+                                        <span class="tag">Portainer</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-category">
-                            <h3 class="skill-category-title"><i class="fas fa-layer-group"></i> 深度學習</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Transformer</span>
-                                <span class="skill-tag">CNN</span>
-                                <span class="skill-tag">LSTM/GRU</span>
+
+                        <!-- 資料庫卡片 -->
+                        <div class="skill-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <span class="icon">🗄️</span>
+                                    資料庫
+                                </div>
+                                <span class="proficiency-badge proficiency-familiar">熟悉</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="skill-category">
+                                    <span class="category-label">關聯式資料庫</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">PostgreSQL</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">向量資料庫</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">Milvus</span>
+                                        <span class="tag">Azure AI Search</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="skill-category">
-                            <h3 class="skill-category-title"><i class="fas fa-globe"></i> 全端開發</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Vue.js</span>
-                                <span class="skill-tag">FastAPI</span>
-                                <span class="skill-tag">Flask</span>
-                                <span class="skill-tag">PostgreSQL</span>
+
+                        <!-- 前端工程卡片 -->
+                        <div class="skill-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <span class="icon">🎨</span>
+                                    前端工程
+                                </div>
+                                <span class="proficiency-badge proficiency-basic">了解</span>
                             </div>
-                        </div>
-                        <div class="skill-category">
-                            <h3 class="skill-category-title"><i class="fas fa-server"></i> DevOps</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Docker</span>
-                                <span class="skill-tag">Harbor</span>
-                                <span class="skill-tag">Nginx</span>
-                                <span class="skill-tag">Portainer</span>
-                            </div>
-                        </div>
-                        <div class="skill-category">
-                            <h3 class="skill-category-title"><i class="fas fa-terminal"></i> 程式語言</h3>
-                            <div class="skill-tags">
-                                <span class="skill-tag">Python</span>
-                                <span class="skill-tag">JavaScript</span>
-                                <span class="skill-tag">C++</span>
-                                <span class="skill-tag">SQL</span>
+                            <div class="card-body">
+                                <div class="skill-category">
+                                    <span class="category-label">程式語言</span>
+                                    <div class="tags">
+                                        <span class="tag">JavaScript</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">框架</span>
+                                    <div class="tags">
+                                        <span class="tag">Vue.js</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -642,6 +843,8 @@
                         </div>
                         <p class="experience-scope">AI + 全端 + 資料庫 + DevOps</p>
                         <ul class="experience-details">
+                            <li>開發語音導覽系統，整合 Azure TTS 實現文字轉語音功能</li>
+                            <li>建立機場即時資訊系統，透過爬蟲技術取得航班動態</li>
                             <li>使用 Vue.js + FastAPI 開發全端應用，建立高並發異步後端系統</li>
                             <li>設計 PostgreSQL 資料表結構，使用 Alembic 進行版本控制</li>
                             <li>Docker 容器化部署，配置 Nginx、HTTPS、Harbor、Portainer 維運監控</li>
@@ -763,11 +966,11 @@
                                 <span class="project-badge badge-personal">Side Project</span>
                             </div>
                             <p class="project-desc">
-                                下班時間自主開發，使用 CNN + LSTM + OpenPose 建立完整手勢辨識 Pipeline。
+                                下班時間自主開發，使用 MediaPipe 偵測手部關節 + MLP 模型進行手勢分類，含特徵正規化處理。
                             </p>
                             <div class="project-stats">
                                 <div class="stat">
-                                    <span class="stat-value">85%</span>
+                                    <span class="stat-value">99%</span>
                                     <span class="stat-label">準確率</span>
                                 </div>
                                 <div class="stat">
@@ -790,7 +993,7 @@
                         <div>
                             <h3 class="education-school">國立清華大學</h3>
                             <p class="education-degree">計算與建模科學 碩士</p>
-                            <p class="education-thesis">論文：Transformer-Based Model for Quantum System Prediction</p>
+                            <p class="education-thesis">論文：Transformer-Based Model for Predicting the Approximation to the Entangled Bipartite Quantum System</p>
                         </div>
                         <span class="experience-date">2022 - 2024</span>
                     </div>
