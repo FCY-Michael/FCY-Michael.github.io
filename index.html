@@ -72,6 +72,25 @@
         .header-content {
             position: relative;
             z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .header-text {
+            flex: 1;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            object-position: center 15%;
+            margin-left: 30px;
+            flex-shrink: 0;
+            border-radius: 50% 50% 45% 45% / 40% 40% 60% 60%;
+            -webkit-mask-image: radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%);
+            mask-image: radial-gradient(ellipse 85% 80% at center, black 50%, transparent 100%);
         }
 
         .name {
@@ -649,23 +668,26 @@
             <!-- Header -->
             <header class="header">
                 <div class="header-content">
-                    <h1 class="name">范丞佑</h1>
-                    <p class="name-en">Michael Fan</p>
-                    <p class="title">AI Software Engineer | Full-Stack AI Solutions</p>
-                    <div class="contact-info">
-                        <span class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <a href="mailto:fcy0978591011@gmail.com">fcy0978591011@gmail.com</a>
-                        </span>
-                        <span class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            0978-591-011
-                        </span>
-                        <span class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            Taichung
-                        </span>
-                                            </div>
+                    <div class="header-text">
+                        <h1 class="name">范丞佑</h1>
+                        <p class="name-en">Michael Fan</p>
+                        <p class="title">AI Software Engineer | Full-Stack AI Solutions</p>
+                        <div class="contact-info">
+                            <span class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:fcy0978591011@gmail.com">fcy0978591011@gmail.com</a>
+                            </span>
+                            <span class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                0978-591-011
+                            </span>
+                            <span class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Taichung
+                            </span>
+                        </div>
+                    </div>
+                    <img class="profile-photo" src="IMG_20260107_215534.jpg" alt="Profile Photo">
                 </div>
             </header>
 
