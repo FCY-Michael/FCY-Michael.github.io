@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>范丞佑 Michael Fan | AI Software Engineer</title>
+    <meta name="description" content="AI Software Engineer with expertise in LLM, RAG, Full-Stack Development and DevOps">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --accent: #06b6d4;
+            --bg: #ffffff;
+            --bg-secondary: #f8fafc;
+            --text: #1e293b;
+            --text-secondary: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .resume {
+            background: var(--bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 48px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .name-en {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 16px;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: #a5b4fc;
+            margin-bottom: 24px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .contact-item i {
+            width: 16px;
+            color: #a5b4fc;
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .contact-item a:hover {
+            color: #a5b4fc;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 40px;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 36px;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            font-size: 1rem;
+        }
+
+        /* Summary */
+        .summary {
+            background: var(--bg-secondary);
+            padding: 20px 24px;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .skill-category {
+            background: var(--bg-secondary);
+            padding: 16px;
+            border-radius: 10px;
+        }
+
+        .skill-category-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-category-title i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .skill-tag {
+            background: white;
+            color: var(--text-secondary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        /* Experience */
+        .experience-item {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 28px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 22px;
+            width: 2px;
+            height: calc(100% + 16px);
+            background: var(--border);
+        }
+
+        .experience-item:last-child::after {
+            display: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .experience-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .experience-company {
+            font-size: 0.95rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .experience-date {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background: var(--bg-secondary);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .experience-scope {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .experience-details {
+            list-style: none;
+        }
+
+        .experience-details li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .experience-details li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .achievement {
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+
+        .achievement-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+        }
+
+        .achievement-content {
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Education */
+        .education-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 16px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-school {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .education-degree {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .education-thesis {
+            font-size: 0.8rem;
+            color: var(--secondary);
+            margin-top: 4px;
+            font-style: italic;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            gap: 16px;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .project-name {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .project-badge {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .badge-company {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .badge-personal {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .project-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .project-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .stat {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+        }
+
+        /* Awards */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+        }
+
+        .award-item {
+            background: var(--bg-secondary);
+            padding: 14px 16px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .award-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .award-rank {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 24px 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 12px;
+            }
+
+            .header {
+                padding: 32px 24px;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 24px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .experience-header {
+                flex-direction: column;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                padding: 0;
+                max-width: 100%;
+            }
+
+            .resume {
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="resume">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <h1 class="name">范丞佑</h1>
+                    <p class="name-en">Michael Fan</p>
+                    <p class="title">AI Software Engineer | Full-Stack AI Solutions</p>
+                    <div class="contact-info">
+                        <span class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:fcy0978591011@gmail.com">fcy0978591011@gmail.com</a>
+                        </span>
+                        <span class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            0978-591-011
+                        </span>
+                        <span class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            Taichung
+                        </span>
+                                            </div>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Summary -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> 專業簡介</h2>
+                    <p class="summary">
+                        具備 2 年 AI 開發經驗的<strong>全棧 AI 工程師</strong>，專精於 LLM 應用、RAG 架構設計與深度學習模型開發。曾作為公司唯一 AI 工程師，獨立完成從模型開發、前後端系統到容器化部署的完整產品開發流程。成功開發<a href="https://www.prnewswire.com/news-releases/surglasses-launches-the-worlds-first-ai-anatomy-table-302485450.html" target="_blank" style="color: var(--primary); font-weight: 600;">「全球首款 AI 解剖桌」</a>並獲國際媒體報導。
+                    </p>
+                </section>
+
+                <!-- Skills -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-code"></i> 技術技能</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3 class="skill-category-title"><i class="fas fa-brain"></i> AI / ML</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">PyTorch</span>
+                                <span class="skill-tag">TensorFlow</span>
+                                <span class="skill-tag">LangChain</span>
+                                <span class="skill-tag">HuggingFace</span>
+                                <span class="skill-tag">RAG</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3 class="skill-category-title"><i class="fas fa-robot"></i> LLM</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">OpenAI API</span>
+                                <span class="skill-tag">Prompt Engineering</span>
+                                <span class="skill-tag">Milvus</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3 class="skill-category-title"><i class="fas fa-layer-group"></i> 深度學習</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Transformer</span>
+                                <span class="skill-tag">CNN</span>
+                                <span class="skill-tag">LSTM/GRU</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3 class="skill-category-title"><i class="fas fa-globe"></i> 全端開發</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Vue.js</span>
+                                <span class="skill-tag">FastAPI</span>
+                                <span class="skill-tag">Flask</span>
+                                <span class="skill-tag">PostgreSQL</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3 class="skill-category-title"><i class="fas fa-server"></i> DevOps</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Docker</span>
+                                <span class="skill-tag">Harbor</span>
+                                <span class="skill-tag">Nginx</span>
+                                <span class="skill-tag">Portainer</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3 class="skill-category-title"><i class="fas fa-terminal"></i> 程式語言</h3>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">C++</span>
+                                <span class="skill-tag">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> 工作經歷</h2>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">AI Software Engineer</h3>
+                                <p class="experience-company">旅汪數位股份有限公司</p>
+                            </div>
+                            <span class="experience-date">2025/7 - 2025/12</span>
+                        </div>
+                        <p class="experience-scope">AI + 全端 + 資料庫 + DevOps</p>
+                        <ul class="experience-details">
+                            <li>使用 Vue.js + FastAPI 開發全端應用，建立高並發異步後端系統</li>
+                            <li>設計 PostgreSQL 資料表結構，使用 Alembic 進行版本控制</li>
+                            <li>Docker 容器化部署，配置 Nginx、HTTPS、Harbor、Portainer 維運監控</li>
+                            <li>使用 Dockge 進行 docker-compose 可視化管理與部署</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">AI Software Engineer</h3>
+                                <p class="experience-company">台灣骨王生技股份有限公司</p>
+                            </div>
+                            <span class="experience-date">2024/11 - 2025/7</span>
+                        </div>
+                        <p class="experience-scope">公司唯一 AI 工程師</p>
+                        <ul class="experience-details">
+                            <li>獨立設計並實作基於 LLM 的醫療問答系統（AsclepiusAI）</li>
+                            <li>建立 RAG 架構整合解剖學知識庫，運用 Prompt Engineering 優化輸出</li>
+                            <li>從零開始設計系統架構，獨立完成開發與部署</li>
+                        </ul>
+                        <div class="achievement">
+                            <p class="achievement-title">關鍵成就</p>
+                            <p class="achievement-content">
+                                成功開發並上線<a href="https://www.prnewswire.com/news-releases/surglasses-launches-the-worlds-first-ai-anatomy-table-302485450.html" target="_blank" class="highlight" style="text-decoration: underline;">「全球首款 AI 解剖桌」</a>，獲 PR Newswire 國際媒體報導
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">資料科學家（實習）</h3>
+                                <p class="experience-company">晶元光電股份有限公司</p>
+                            </div>
+                            <span class="experience-date">2024/1 - 2024/6</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>導入資料增強技術，將 Wafer 瑕疵檢測模型<span class="highlight">準確率提升至 99%</span></li>
+                            <li>優化資料處理程式，<span class="highlight">效能提升 24 倍</span>（12 分 30 秒 → 30 秒）</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">提示工程師（暑期實習）</h3>
+                                <p class="experience-company">友達光電股份有限公司</p>
+                            </div>
+                            <span class="experience-date">2023/6 - 2023/9</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>開發 AI-TalentSearch 履歷媒合系統</li>
+                            <li>實現<span class="highlight">千份履歷一分鐘內</span>完成智慧媒合</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">影像辨識工程師（實習）</h3>
+                                <p class="experience-company">財團法人工業技術研究院</p>
+                            </div>
+                            <span class="experience-date">2023/2 - 2023/6</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>建立 AI 模型進行商品取出辨識與自動化檢測</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> 代表專案</h2>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-name">AsclepiusAI - AI 解剖學習助手</h3>
+                                <span class="project-badge badge-company">公司專案</span>
+                            </div>
+                            <p class="project-desc">
+                                獨立開發醫療 AI 問答系統，支援語音輸入、問答與考試模式。從系統架構、RAG 知識庫、到離線部署全程獨立完成。
+                            </p>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-value">全球首款</span>
+                                    <span class="stat-label">AI 解剖桌</span>
+                                </div>
+                                <a href="https://www.prnewswire.com/news-releases/surglasses-launches-the-worlds-first-ai-anatomy-table-302485450.html" target="_blank" class="stat" style="text-decoration: none;">
+                                    <span class="stat-value">媒體報導</span>
+                                    <span class="stat-label">PR Newswire ↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-name">Wafer 瑕疵檢測系統優化</h3>
+                                <span class="project-badge badge-company">公司專案</span>
+                            </div>
+                            <p class="project-desc">
+                                優化半導體 Wafer 瑕疵檢測 AI 模型，透過資料增強與程式優化大幅提升效能。
+                            </p>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-value">99%</span>
+                                    <span class="stat-label">準確率</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">24x</span>
+                                    <span class="stat-label">速度提升</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-name">手勢辨識節奏遊戲</h3>
+                                <span class="project-badge badge-personal">Side Project</span>
+                            </div>
+                            <p class="project-desc">
+                                下班時間自主開發，使用 CNN + LSTM + OpenPose 建立完整手勢辨識 Pipeline。
+                            </p>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-value">85%</span>
+                                    <span class="stat-label">準確率</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">30fps</span>
+                                    <span class="stat-label">即時處理</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">8</span>
+                                    <span class="stat-label">手勢類型</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> 學歷</h2>
+                    <div class="education-item">
+                        <div>
+                            <h3 class="education-school">國立清華大學</h3>
+                            <p class="education-degree">計算與建模科學 碩士</p>
+                            <p class="education-thesis">論文：Transformer-Based Model for Quantum System Prediction</p>
+                        </div>
+                        <span class="experience-date">2022 - 2024</span>
+                    </div>
+                    <div class="education-item">
+                        <div>
+                            <h3 class="education-school">國立高雄第一科技大學</h3>
+                            <p class="education-degree">電腦與通訊工程 學士</p>
+                        </div>
+                        <span class="experience-date">2018 - 2022</span>
+                    </div>
+                </section>
+
+                <!-- Awards -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-trophy"></i> 競賽與榮譽</h2>
+                    <div class="awards-grid">
+                        <div class="award-item">
+                            <p class="award-title">ICPC Asia Taiwan</p>
+                            <p class="award-rank">第 12 名</p>
+                        </div>
+                        <div class="award-item">
+                            <p class="award-title">CPE 程式能力檢定</p>
+                            <p class="award-rank">全國前 7.8%</p>
+                        </div>
+                        <div class="award-item">
+                            <p class="award-title">全國跨域整合競賽</p>
+                            <p class="award-rank">佳作（教育部獎）</p>
+                        </div>
+                        <div class="award-item">
+                            <p class="award-title">院專題資通訊組</p>
+                            <p class="award-rank">特優</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p class="footer-text">
+                    <i class="fas fa-code"></i> Built with passion for AI & Technology
+                </p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
