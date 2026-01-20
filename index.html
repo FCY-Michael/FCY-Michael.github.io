@@ -648,6 +648,20 @@
             }
         }
 
+        /* Language Label */
+        .lang-label {
+            text-align: center;
+            padding: 10px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .resume {
+            margin-bottom: 40px;
+        }
+
         /* Print styles */
         @media print {
             body {
@@ -662,9 +676,26 @@
             .resume {
                 box-shadow: none;
                 border-radius: 0;
+                margin-bottom: 0;
             }
 
             .header {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page-break {
+                page-break-after: always;
+            }
+
+            .lang-label,
+            .proficiency-badge,
+            .badge-company,
+            .badge-personal,
+            .achievement,
+            .award-item,
+            .education-item,
+            .project-card {
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
             }
@@ -1064,7 +1095,408 @@
             <!-- Footer -->
             <footer class="footer">
                 <p class="footer-text">
-                    <i>個人簡歷</i> 
+                    <i>個人簡歷</i>
+                </p>
+            </footer>
+        </div>
+
+        <!-- Page Break for Print -->
+        <div class="page-break"></div>
+
+        <!-- ==================== -->
+        <!-- English Version -->
+        <!-- ==================== -->
+        <div class="resume">
+            <div class="lang-label">English Version</div>
+            <header class="header">
+                <div class="header-content">
+                    <div class="header-text">
+                        <h1 class="name">Michael Fan</h1>
+                        <p class="name-en">范丞佑</p>
+                        <p class="title">AI Software Engineer | LLM Applications & AI Research</p>
+                        <div class="contact-info">
+                            <span class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:fcy0978591011@gmail.com">fcy0978591011@gmail.com</a>
+                            </span>
+                            <span class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                +886-978-591-011
+                            </span>
+                            <span class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                Taichung, Taiwan
+                            </span>
+                        </div>
+                    </div>
+                    <img class="profile-photo" src="IMG_20260107_215534.jpg" alt="Profile Photo">
+                </div>
+            </header>
+
+            <main class="main-content">
+                <!-- Summary -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-user"></i> Professional Summary</h2>
+                    <p class="summary">
+                        <strong>AI Engineer</strong> with 2 years of experience specializing in <strong>LLM application development, RAG architecture design, deep learning model training, and performance optimization</strong>. Master's research focused on Transformer models; achieved 24x performance improvement in model processing. Served as the sole AI engineer, independently developing the <a href="https://www.prnewswire.com/news-releases/surglasses-launches-the-worlds-first-ai-anatomy-table-302485450.html" target="_blank" style="color: var(--primary); font-weight: 600;">"World's First AI Anatomy Table"</a> featured in international media.
+                    </p>
+                </section>
+
+                <!-- Skills -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-code"></i> Technical Skills</h2>
+                    <div class="skills-container">
+                        <!-- AI Engineering -->
+                        <div class="skill-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <span class="icon">🤖</span>
+                                    AI Engineering
+                                </div>
+                                <span class="proficiency-badge proficiency-expert">Expert</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="skill-category">
+                                    <span class="category-label">LLM Platforms</span>
+                                    <div class="tags">
+                                        <span class="tag">OpenAI API</span>
+                                        <span class="tag">Claude API</span>
+                                        <span class="tag">Azure OpenAI</span>
+                                        <span class="tag">AWS Bedrock</span>
+                                        <span class="tag">Gemini</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">Local LLM Deployment</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">Ollama</span>
+                                        <span class="tag tag-highlight">vLLM</span>
+                                        <span class="tag">Llama</span>
+                                        <span class="tag">Mistral</span>
+                                        <span class="tag">Qwen</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">LLM Application Development</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">LangChain</span>
+                                        <span class="tag">HuggingFace</span>
+                                        <span class="tag tag-highlight">RAG</span>
+                                        <span class="tag">Prompt Engineering</span>
+                                        <span class="tag">Embedding</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">Deep Learning</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">PyTorch</span>
+                                        <span class="tag tag-highlight">Transformer</span>
+                                        <span class="tag tag-highlight">Fine-tuning</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">Speech AI</span>
+                                    <div class="tags">
+                                        <span class="tag">TTS</span>
+                                        <span class="tag">STT</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Backend Engineering -->
+                        <div class="skill-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <span class="icon">⚙️</span>
+                                    Backend Engineering
+                                </div>
+                                <span class="proficiency-badge proficiency-familiar">Proficient</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="skill-category">
+                                    <span class="category-label">Programming Language</span>
+                                    <div class="tags">
+                                        <span class="tag">Python</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">Web Frameworks</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">FastAPI</span>
+                                        <span class="tag">Flask</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">DevOps</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">Docker</span>
+                                        <span class="tag">Nginx</span>
+                                        <span class="tag">Harbor</span>
+                                        <span class="tag">Portainer</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Database -->
+                        <div class="skill-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <span class="icon">🗄️</span>
+                                    Database
+                                </div>
+                                <span class="proficiency-badge proficiency-familiar">Proficient</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="skill-category">
+                                    <span class="category-label">Relational Database</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">PostgreSQL</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">Vector Database</span>
+                                    <div class="tags">
+                                        <span class="tag tag-highlight">Milvus</span>
+                                        <span class="tag">Azure AI Search</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Frontend Engineering -->
+                        <div class="skill-card">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <span class="icon">🎨</span>
+                                    Frontend Engineering
+                                </div>
+                                <span class="proficiency-badge proficiency-basic">Familiar</span>
+                            </div>
+                            <div class="card-body">
+                                <div class="skill-category">
+                                    <span class="category-label">Programming Language</span>
+                                    <div class="tags">
+                                        <span class="tag">JavaScript</span>
+                                    </div>
+                                </div>
+                                <div class="skill-category">
+                                    <span class="category-label">Framework</span>
+                                    <div class="tags">
+                                        <span class="tag">Vue.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Experience -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-briefcase"></i> Work Experience <span class="total-experience" id="total-experience-en"></span></h2>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">AI Software Engineer</h3>
+                                <p class="experience-company">TravelWang Digital Co., Ltd.</p>
+                            </div>
+                            <span class="experience-date">Jul 2025 - Dec 2025</span>
+                        </div>
+                        <p class="experience-scope">AI + Full-Stack + Database + DevOps</p>
+                        <ul class="experience-details">
+                            <li>Developed voice guidance system with Azure TTS integration</li>
+                            <li>Built real-time airport information system using web scraping</li>
+                            <li>Built full-stack applications using Vue.js + FastAPI with async backend</li>
+                            <li>Designed PostgreSQL schema with Alembic migration management</li>
+                            <li>Containerized deployment with Docker, Nginx, HTTPS, Harbor, Portainer</li>
+                            <li>Used Dockge for docker-compose visual management and deployment</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">AI Software Engineer</h3>
+                                <p class="experience-company">Surglasses Inc.</p>
+                            </div>
+                            <span class="experience-date">Nov 2024 - Jul 2025</span>
+                        </div>
+                        <p class="experience-scope">Sole AI Engineer</p>
+                        <ul class="experience-details">
+                            <li>Independently designed and implemented LLM-based medical Q&A system (AsclepiusAI)</li>
+                            <li>Built RAG architecture integrating anatomy knowledge base with Prompt Engineering</li>
+                            <li>Designed system architecture from scratch, completed development and deployment</li>
+                        </ul>
+                        <div class="achievement">
+                            <p class="achievement-title">Key Achievement</p>
+                            <p class="achievement-content">
+                                Developed and launched the <a href="https://www.prnewswire.com/news-releases/surglasses-launches-the-worlds-first-ai-anatomy-table-302485450.html" target="_blank" class="highlight" style="text-decoration: underline;">"World's First AI Anatomy Table"</a>, featured by PR Newswire
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">Data Scientist (Intern)</h3>
+                                <p class="experience-company">Epistar Corporation</p>
+                            </div>
+                            <span class="experience-date">Jan 2024 - Jun 2024</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Implemented data augmentation, achieving <span class="highlight">99% accuracy</span> in wafer defect detection</li>
+                            <li>Optimized data processing pipeline with <span class="highlight">24x performance improvement</span> (12m30s → 30s)</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">Prompt Engineer (Summer Intern)</h3>
+                                <p class="experience-company">AU Optronics Corporation</p>
+                            </div>
+                            <span class="experience-date">Jun 2023 - Sep 2023</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Developed AI-TalentSearch resume matching system</li>
+                            <li>Achieved intelligent matching of <span class="highlight">1,000 resumes within 1 minute</span></li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div>
+                                <h3 class="experience-title">Computer Vision Engineer (Intern)</h3>
+                                <p class="experience-company">Industrial Technology Research Institute (ITRI)</p>
+                            </div>
+                            <span class="experience-date">Feb 2023 - Jun 2023</span>
+                        </div>
+                        <ul class="experience-details">
+                            <li>Built AI models for product detection and automated inspection</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-project-diagram"></i> Featured Projects</h2>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-name">AsclepiusAI - AI Anatomy Learning Assistant</h3>
+                                <span class="project-badge badge-company">Company Project</span>
+                            </div>
+                            <p class="project-desc">
+                                Independently developed medical AI Q&A system supporting voice input, Q&A and exam modes. Completed system architecture, RAG knowledge base, and offline deployment independently.
+                            </p>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-value">World's First</span>
+                                    <span class="stat-label">AI Anatomy Table</span>
+                                </div>
+                                <a href="https://www.prnewswire.com/news-releases/surglasses-launches-the-worlds-first-ai-anatomy-table-302485450.html" target="_blank" class="stat" style="text-decoration: none;">
+                                    <span class="stat-value">Media Coverage</span>
+                                    <span class="stat-label">PR Newswire ↗</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-name">Wafer Defect Detection Optimization</h3>
+                                <span class="project-badge badge-company">Company Project</span>
+                            </div>
+                            <p class="project-desc">
+                                Optimized semiconductor wafer defect detection AI model through data augmentation and code optimization.
+                            </p>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-value">99%</span>
+                                    <span class="stat-label">Accuracy</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">24x</span>
+                                    <span class="stat-label">Speed Improvement</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h3 class="project-name">Gesture Recognition Rhythm Game</h3>
+                                <span class="project-badge badge-personal">Side Project</span>
+                            </div>
+                            <p class="project-desc">
+                                Self-developed during off-hours using MediaPipe for hand joint detection + MLP model for gesture classification with feature normalization.
+                            </p>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-value">99%</span>
+                                    <span class="stat-label">Accuracy</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">30fps</span>
+                                    <span class="stat-label">Real-time</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-value">8</span>
+                                    <span class="stat-label">Gesture Types</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Education -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Education</h2>
+                    <div class="education-item">
+                        <div>
+                            <h3 class="education-school">National Tsing Hua University</h3>
+                            <p class="education-degree">M.S. in Computational and Modeling Science</p>
+                            <p class="education-thesis">Thesis: Transformer-Based Model for Predicting the Approximation to the Entangled Bipartite Quantum System</p>
+                        </div>
+                        <span class="experience-date">2022 - 2024</span>
+                    </div>
+                    <div class="education-item">
+                        <div>
+                            <h3 class="education-school">National Kaohsiung First University of Science and Technology</h3>
+                            <p class="education-degree">B.S. in Computer and Communication Engineering</p>
+                        </div>
+                        <span class="experience-date">2018 - 2022</span>
+                    </div>
+                </section>
+
+                <!-- Awards -->
+                <section class="section">
+                    <h2 class="section-title"><i class="fas fa-trophy"></i> Awards & Honors</h2>
+                    <div class="awards-grid">
+                        <div class="award-item">
+                            <p class="award-title">ICPC Asia Taiwan</p>
+                            <p class="award-rank">12th Place</p>
+                        </div>
+                        <div class="award-item">
+                            <p class="award-title">CPE Programming Test</p>
+                            <p class="award-rank">Top 7.8% Nationwide</p>
+                        </div>
+                        <div class="award-item">
+                            <p class="award-title">National Cross-Domain Competition</p>
+                            <p class="award-rank">Merit Award (MOE)</p>
+                        </div>
+                        <div class="award-item">
+                            <p class="award-title">College Project ICT Division</p>
+                            <p class="award-rank">Outstanding Award</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p class="footer-text">
+                    <i>Resume</i>
                 </p>
             </footer>
         </div>
@@ -1118,8 +1550,21 @@
         if (fullTimeYears > 0) fullTimeText += fullTimeYears + ' 年 ';
         if (fullTimeRemainMonths > 0) fullTimeText += fullTimeRemainMonths + ' 個月';
 
+        // 中文版
         document.getElementById('total-experience').textContent =
             '（總計 ' + displayText.trim() + '，正職 ' + fullTimeText.trim() + '）';
+
+        // 英文版
+        let displayTextEn = '';
+        if (years > 0) displayTextEn += years + ' yr ';
+        if (months > 0) displayTextEn += months + ' mo';
+
+        let fullTimeTextEn = '';
+        if (fullTimeYears > 0) fullTimeTextEn += fullTimeYears + ' yr ';
+        if (fullTimeRemainMonths > 0) fullTimeTextEn += fullTimeRemainMonths + ' mo';
+
+        document.getElementById('total-experience-en').textContent =
+            '(Total: ' + displayTextEn.trim() + ', Full-time: ' + fullTimeTextEn.trim() + ')';
     });
     </script>
 </body>
